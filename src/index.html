@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chaos</title>
+  <link rel="stylesheet" src="css/style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="shortcut icon" href="#" />
+</head>
+
+<body>
+
+  <header>
+
+    <div class="header-block">
+      <h1>Chaos</h1>
+      <ul class="main-menu-list">
+        <li class="main-menu-item search-box">
+          <form class="search-form">
+            <input class="search-field" type="text" placeholder="search...">
+            <button class="material-icons search-btn" type="submit">search</button>
+          </form>
+        </li>
+        <li class="main-menu-item favorite-link">
+          <a href="">
+            <span class="material-icons">favorite_border</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </header>
+
+  <main class="drop-area">
+
+    <!-- Главная страница - начало -->
+
+    <div class="info-block">
+
+      <ul class="bot-commands-list">
+        <li class="bot-command">@weather</li>
+        <li class="bot-command">@series</li>
+        <li class="bot-command">@book</li>
+        <li class="bot-command">@game</li>
+        <li class="bot-command">@recipe</li>
+      </ul>
+
+      <div class="pin-block">
+        
+        <!-- Здесь будет закрепленное сообщение -->
+
+      </div>
+
+    </div>
+
+    <div class="finded-block">
+      <span class="finded-header">Finded messages</span>
+      <div class="finded-tools">
+        <span class="material-icons finded-left">chevron_left</span>
+        <span class="finded-counter">0</span>
+        <span class="material-icons finded-right">chevron_right</span>
+        <span class="material-icons finded-clear">autorenew</span>
+      </div>
+    </div>
+
+    <div class="messages-block">
+
+      <!-- Здесь будут сообщения -->
+
+    </div>
+
+    <!-- Модальное окно с избранными сообщениями (начало) -->
+    <div class="favorites_modal inactive">
+      <div class="modal_content">
+        <div class="modal_header">
+          <span class="modal_name">Favorite messages</span>
+          <button class="material-icons close_modal_btn">close</button>
+        </div>
+        <ul class="favorite_msgs"></ul>
+        <span class="clear-favorite_msgs">Clear all</span>
+      </div>
+    </div>
+    <!-- Модальное окно с избранными сообщениями (конец) -->
+
+    <div class="typing-block">
+      <input class="typing-field" type="text" placeholder="type here..."/>
+      <div class="file-box">
+        <span class="file-box-title">File name:</span>
+        <div class="file-name">
+          <div class="loader inactive">
+            <div class="sk-fading-circle">
+              <div class="sk-circle1 sk-circle"></div>
+              <div class="sk-circle2 sk-circle"></div>
+              <div class="sk-circle3 sk-circle"></div>
+              <div class="sk-circle4 sk-circle"></div>
+              <div class="sk-circle5 sk-circle"></div>
+              <div class="sk-circle6 sk-circle"></div>
+              <div class="sk-circle7 sk-circle"></div>
+              <div class="sk-circle8 sk-circle"></div>
+              <div class="sk-circle9 sk-circle"></div>
+              <div class="sk-circle10 sk-circle"></div>
+              <div class="sk-circle11 sk-circle"></div>
+              <div class="sk-circle12 sk-circle"></div>
+            </div>
+          </div>
+          <p class="file-name-text"></p>
+          <button class="close-file inactive">X</button>
+        </div>
+      </div>
+      
+      <ul class="typing-panel">
+        <li class="attachment">
+          <label class="custom-file-upload material-icons attach-icon">
+            <input type="file" class="file"/>
+              attach_file
+          </label>
+        </li>
+        <li class="location">
+          <span class="material-icons location-icon">location_on</span>
+        </li>
+        <li class="sending">
+          <span class="material-icons send-icon send-inactive">send</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Главная страница - конец -->
+
+  </main>
+
+  <footer>
+
+    <span class="author-name">Valerie Sidorova, 2021</span>
+
+  </footer>
+
+</body>
+
+</html>

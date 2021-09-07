@@ -1,0 +1,598 @@
+/*Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&family=Nanum+Pen+Script&display=swap');
+
+/* Основные стили */
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #535353;
+}
+
+ul, p {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: #535353;
+}
+
+button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+button:active, button:focus {
+  outline: none;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
+.material-icons {
+  font-size: 1.25vw;
+}
+
+input {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: none;
+}
+
+/* Стили для главной страницы */
+
+/* Шапка сайта */
+
+h1 {
+  margin: 0;
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 5.2vw;
+}
+  
+.header-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2vw 4.16vw 1.04vw 4.16vw;
+}
+
+.main-menu-list {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+.main-menu-item:nth-child(2) {
+  margin: 0 1.3vw;
+}
+
+.search-form {
+  position: relative;
+  width: 15.62vw;
+  margin: 0 auto;
+  height: 2.18vw;
+}
+
+.search-field {
+  height: 2.18vw;
+  width: 0;
+  padding: 0 2.18vw 0 0.78vw;
+
+  border: none;
+  border-bottom: 0.1vw solid transparent;
+  outline: none;
+  background: transparent;
+
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.78vw;
+  font-weight: 400;
+
+  transition: .4s cubic-bezier(0, 0.8, 0, 1);
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.search-field:focus {
+  width: 15.62vw;
+  z-index: 1;
+  border-bottom: 0.1vw solid #919191;
+}
+
+.search-field::placeholder {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.78vw;
+  font-weight: 400;
+  letter-spacing: 0.45em;
+}
+
+.search-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+  /* Основной контент */
+
+main {
+  display: flex;
+  flex-direction: column;
+  margin: 0 4.16vw;
+}
+
+.info-block {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.bot-commands-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 12.76vw;
+  height: 3.64vw;
+
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.78vw;
+  font-weight: 400;
+}
+
+.bot-command {
+  margin-right: 0.52vw;
+  cursor: pointer;
+}
+
+.finded-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.finded-tools {
+  display: flex;
+  align-items: center;
+}
+
+.finded-left, .finded-right {
+  margin-left: 0.52vw;
+  margin-right: 0.52vw;
+  cursor: pointer;
+}
+
+.finded-counter, .finded-header {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.78vw;
+  font-weight: 400;
+}
+
+.finded-clear {
+  cursor: pointer;
+}
+
+.current-finded-msg {
+  box-shadow: 0 0 10px 5px rgb(222, 232, 218);
+}
+
+.messages-block {
+  width: 52.08vw;
+  height: 25.41vw;
+  margin: 0.5vw auto 0 auto;
+  padding: 0.52vw;
+  border: 0.13vw solid #979797;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.message {
+  max-width: 21.87vw;
+  margin-bottom: 0.52vw;
+  padding: 0.52vw;
+  border: 0.05vw solid #979797;
+  border-radius: 0.3vw;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.finded-msg {
+  background-color: rgb(234, 249, 233);
+  border: 0.13vw solid #8caa8e;
+}
+
+.user-msg {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+}
+
+.user-msg-text {
+  word-break: break-all;
+  overflow: hidden;
+}
+
+.user-msg-geolocation {
+  padding-top: 0.52vw;
+  font-size: 0.5vw;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.more-btn:visited + .user-msg-text { 
+  height: auto; 
+  overflow: visible;
+}
+
+.users-link {
+  font-weight: 700;
+}
+
+.user-msg-file {
+  display: flex;
+  align-items: center;
+  margin-top: 0.52vw;
+  font-size: 0.6vw;
+  cursor: pointer;
+}
+
+.msg-tools {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.msg-tool:nth-child(2) {
+  margin: 0 0.5vw;
+}
+
+.bot-msg-box {
+  margin-top: 0.7vw;
+}
+
+.favorite-tool, .download-tool, .pin-tool {
+  font-size: 0.9vw;
+}
+
+.book-intro, .weather-intro, .games-intro, .recipes-intro, .series-intro {
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.bot-msg-body, .user-msg-body {
+  margin-top: 0.4vw;
+  font-size: 0.75vw;
+}
+
+.msg-info-panel {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.99vw;
+}
+
+.more-btn, .msg-date {
+  font-size: 0.6vw;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: lowercase;
+  cursor: pointer;
+}
+
+.more-off {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.msg-date {
+  cursor: default;
+}
+
+.typing-block {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 52.08vw;
+  height: 2.5vw;
+  margin: 0 auto 2.5vw auto;
+  padding: 0.52vw;
+  border-width: 0 0.13vw 0.13vw;
+  border-style: solid;
+  border-color: #979797;
+}
+
+.typing-field {
+  width: 29.42vw;
+  height: 1.5vw;
+  padding: 0.52vw;
+  border: 0.05vw solid #979797;
+  border-radius: 0.52vw;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.78vw;
+  font-weight: 400;
+}
+
+.typing-field::placeholder {
+  letter-spacing: 0.45em;
+}
+
+.file-box {
+  display: flex;
+  flex-direction: column;
+  width: 5.2vw;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+.file-box-title {
+  font-size: 0.8vw;
+}
+
+.file-name {
+  display: flex;
+  align-items: center;
+  
+}
+
+.sk-fading-circle {
+  width: 0.78vw;
+  height: 0.78vw;
+  margin-right: 0.26vw;
+  position: relative;
+}
+
+.sk-fading-circle .sk-circle {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.sk-fading-circle .sk-circle:before {
+  content: '';
+  display: block;
+  margin: 0 auto;
+  width: 15%;
+  height: 15%;
+  background-color: #333;
+  border-radius: 100%;
+  -webkit-animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
+          animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
+}
+.sk-fading-circle .sk-circle2 {
+  -webkit-transform: rotate(30deg);
+      -ms-transform: rotate(30deg);
+          transform: rotate(30deg);
+}
+.sk-fading-circle .sk-circle3 {
+  -webkit-transform: rotate(60deg);
+      -ms-transform: rotate(60deg);
+          transform: rotate(60deg);
+}
+.sk-fading-circle .sk-circle4 {
+  -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+.sk-fading-circle .sk-circle5 {
+  -webkit-transform: rotate(120deg);
+      -ms-transform: rotate(120deg);
+          transform: rotate(120deg);
+}
+.sk-fading-circle .sk-circle6 {
+  -webkit-transform: rotate(150deg);
+      -ms-transform: rotate(150deg);
+          transform: rotate(150deg);
+}
+.sk-fading-circle .sk-circle7 {
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.sk-fading-circle .sk-circle8 {
+  -webkit-transform: rotate(210deg);
+      -ms-transform: rotate(210deg);
+          transform: rotate(210deg);
+}
+.sk-fading-circle .sk-circle9 {
+  -webkit-transform: rotate(240deg);
+      -ms-transform: rotate(240deg);
+          transform: rotate(240deg);
+}
+.sk-fading-circle .sk-circle10 {
+  -webkit-transform: rotate(270deg);
+      -ms-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+.sk-fading-circle .sk-circle11 {
+  -webkit-transform: rotate(300deg);
+      -ms-transform: rotate(300deg);
+          transform: rotate(300deg); 
+}
+.sk-fading-circle .sk-circle12 {
+  -webkit-transform: rotate(330deg);
+      -ms-transform: rotate(330deg);
+          transform: rotate(330deg); 
+}
+.sk-fading-circle .sk-circle2:before {
+  -webkit-animation-delay: -1.1s;
+          animation-delay: -1.1s; 
+}
+.sk-fading-circle .sk-circle3:before {
+  -webkit-animation-delay: -1s;
+          animation-delay: -1s; 
+}
+.sk-fading-circle .sk-circle4:before {
+  -webkit-animation-delay: -0.9s;
+          animation-delay: -0.9s; 
+}
+.sk-fading-circle .sk-circle5:before {
+  -webkit-animation-delay: -0.8s;
+          animation-delay: -0.8s; 
+}
+.sk-fading-circle .sk-circle6:before {
+  -webkit-animation-delay: -0.7s;
+          animation-delay: -0.7s; 
+}
+.sk-fading-circle .sk-circle7:before {
+  -webkit-animation-delay: -0.6s;
+          animation-delay: -0.6s; 
+}
+.sk-fading-circle .sk-circle8:before {
+  -webkit-animation-delay: -0.5s;
+          animation-delay: -0.5s; 
+}
+.sk-fading-circle .sk-circle9:before {
+  -webkit-animation-delay: -0.4s;
+          animation-delay: -0.4s;
+}
+.sk-fading-circle .sk-circle10:before {
+  -webkit-animation-delay: -0.3s;
+          animation-delay: -0.3s;
+}
+.sk-fading-circle .sk-circle11:before {
+  -webkit-animation-delay: -0.2s;
+          animation-delay: -0.2s;
+}
+.sk-fading-circle .sk-circle12:before {
+  -webkit-animation-delay: -0.1s;
+          animation-delay: -0.1s;
+}
+
+@-webkit-keyframes sk-circleFadeDelay {
+  0%, 39%, 100% { opacity: 0; }
+  40% { opacity: 1; }
+}
+
+@keyframes sk-circleFadeDelay {
+  0%, 39%, 100% { opacity: 0; }
+  40% { opacity: 1; } 
+}
+
+
+.file-name-text {
+  font-size: 0.78vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.close-file {
+  display: flex;
+  margin-left: 0.26vw;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.6vw;
+}
+
+.typing-panel {
+  display: flex;
+  justify-content: space-around;
+  width: 14.01vw;
+}
+
+.emoji-icon, .attach-icon, .location-icon, .send-icon {
+  font-size: 2vw;
+  cursor: pointer;
+}
+
+.send-inactive {
+  opacity: 0.33;
+}
+
+.attach-msg-file {
+  font-size: 1vw;
+}
+
+/* Стили модального окна с избранными сообщениями */
+
+.favorites_modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  background: rgba(54, 54, 54, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: scroll;
+  padding: 1vw;
+}
+
+.modal_content {
+  width: 100%;
+  max-width: 36.45vw;
+  padding: 1vw;
+  background: #f9f9f9;
+  border-radius: 0.15vw;
+  position: relative;
+  box-shadow: 0 0.26vw 0.78vw rgb(87, 87, 87);
+}
+
+.modal_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+}
+
+.modal_name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1vw;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.clear-favorite_msgs {
+  display: flex;
+  justify-content: end;
+  padding-top: 1.8vw;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9vw;
+  font-weight: 400;
+  text-transform: lowercase;
+  cursor: pointer;
+}
+
+/* Стили подвала */
+
+footer {
+  display: flex;
+  justify-content: center;
+}
+
+.author-name {
+  margin-bottom: 1.04vw;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  font-size: 1.04vw;
+  letter-spacing: 0.2em;
+  text-align: center;
+}
+
+/* Скрытие элементов */
+
+.inactive {
+  display: none;
+}
+
+input[type="file"] {
+  display: none;
+}
