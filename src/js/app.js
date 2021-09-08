@@ -1,3 +1,5 @@
+const { saveAs } = require('file-saver');
+
 const allFavLink = document.querySelector('.favorite-link');
 let allFavMsgs = JSON.parse(window.localStorage.getItem('favorite_msgs'));
 if (!allFavMsgs) {
@@ -139,6 +141,36 @@ function renderMessages() {
         </li>
       </ul>`;
     message.insertAdjacentHTML('beforeend', messageBody);
+
+    // Скачивание файла на компьютер
+
+    const convertBase64ToFile = (base64String, convertedFileName) => {
+      const arr = base64String.split(',');
+      const mime = arr[0].match(/:(.*?);/)[1];
+      const bstr = atob(arr[1]);
+      let n = bstr.length;
+      const uint8Array = new Uint8Array(n);
+      for (n; n >= 0; n -= 1) {
+        uint8Array[n] = bstr.charCodeAt(n);
+      }
+      const fileToConvert = new File([uint8Array], convertedFileName, { type: mime });
+      return fileToConvert;
+    };
+
+    const downloadBase64Data = (base64String, downloadFileName) => {
+      const downloadedFile = convertBase64ToFile(base64String, downloadFileName);
+      saveAs(downloadedFile, downloadFileName);
+    };
+
+    // Добавление события на скачку файла
+
+    const downloadFileBtn = message.querySelector('.user-msg-file');
+    if (downloadFileBtn) {
+      downloadFileBtn.addEventListener('click', () => {
+        console.log('download file', element);
+        downloadBase64Data(element.body.file, element.body.fileName);
+      });
+    }
 
     // Добавление сообщений в избранное
 
