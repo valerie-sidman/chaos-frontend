@@ -116,8 +116,11 @@ function renderMessages() {
         </div>
       `;
     } else {
+      // eslint-disable-next-line no-console
       console.error('Something wrong');
+      // eslint-disable-next-line no-console
       console.log(element);
+      // eslint-disable-next-line no-console
       console.log('type: ', element.type, 'body.type: ', element.body.type);
     }
     allFavMsgs = JSON.parse(window.localStorage.getItem('favorite_msgs'));
@@ -167,7 +170,6 @@ function renderMessages() {
     const downloadFileBtn = message.querySelector('.user-msg-file');
     if (downloadFileBtn) {
       downloadFileBtn.addEventListener('click', () => {
-        console.log('download file', element);
         downloadBase64Data(element.body.file, element.body.fileName);
       });
     }
@@ -199,6 +201,7 @@ function renderMessages() {
 
     pinBtn.addEventListener('click', () => {
       if (pinBlock.children.length !== 0) {
+        // eslint-disable-next-line no-alert
         alert('You already have a pinned post. Only one message can be pinned.');
       } else {
         msgToPin.classList.add('pin-msg');
@@ -222,7 +225,7 @@ function renderMessages() {
 
 function getAllMessages(elementId) {
   const xhr = new XMLHttpRequest();
-  const url = `http://localhost:7071/api/messages?page=${counter}`;
+  const url = `https://chaos-organizer-valerie-sidman.herokuapp.com/api/messages?page=${counter}`;
   let id = elementId;
   xhr.open('GET', url, true);
   xhr.addEventListener('load', () => {
@@ -271,7 +274,7 @@ let longitude = '';
 function sendingMessage() {
   if (typingField.value !== '' || fileBase64 !== '' || latitude !== '' || longitude !== '') {
     const xhr = new XMLHttpRequest();
-    const url = 'http://localhost:7071/api/messages/new';
+    const url = 'https://chaos-organizer-valerie-sidman.herokuapp.com/api/messages/new';
 
     const data = {};
     data.text = typingField.value;
@@ -291,6 +294,7 @@ function sendingMessage() {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
           const body = JSON.parse(xhr.response);
+          // eslint-disable-next-line no-console
           console.log(body.id);
           // messages.push(body);
           // renderMessages();
@@ -495,7 +499,7 @@ findedClear.addEventListener('click', () => {
 
 function searchMessage(searchRequest) {
   const xhr = new XMLHttpRequest();
-  const url = `http://localhost:7071/api/messages/find?query=${searchRequest}`;
+  const url = `https://chaos-organizer-valerie-sidman.herokuapp.com/api/messages/find?query=${searchRequest}`;
   xhr.open('GET', url, true);
   xhr.addEventListener('load', () => {
     if (xhr.status === 200) {
@@ -513,6 +517,7 @@ function searchMessage(searchRequest) {
         findedMsgInFocus.scrollIntoView({ behavior: 'smooth' });
         searchField.value = '';
       } else {
+        // eslint-disable-next-line no-alert
         alert('No results found for this search.');
         searchField.value = '';
       }
@@ -529,6 +534,7 @@ searchField.addEventListener('keypress', (e) => {
       clearingFoundMessages();
       searchMessage(searchField.value);
     } else {
+      // eslint-disable-next-line no-alert
       alert('Enter your request.');
     }
   }
