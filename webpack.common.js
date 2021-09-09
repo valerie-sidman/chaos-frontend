@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './index.js',
@@ -37,5 +38,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: './style.css',
     }),
+    new webpack.EnvironmentPlugin(['PATH_TO_BACKEND']),
   ],
 };

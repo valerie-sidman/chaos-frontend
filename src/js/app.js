@@ -1,5 +1,8 @@
 const { saveAs } = require('file-saver');
 
+const pathToBackend = process.env.PATH_TO_BACKEND;
+console.log('pathToBackend', pathToBackend);
+
 const allFavLink = document.querySelector('.favorite-link');
 let allFavMsgs = JSON.parse(window.localStorage.getItem('favorite_msgs'));
 if (!allFavMsgs) {
@@ -225,7 +228,7 @@ function renderMessages() {
 
 function getAllMessages(elementId) {
   const xhr = new XMLHttpRequest();
-  const url = `https://chaos-organizer-valerie-sidman.herokuapp.com/api/messages?page=${counter}`;
+  const url = `${pathToBackend}/api/messages?page=${counter}`;
   let id = elementId;
   xhr.open('GET', url, true);
   xhr.addEventListener('load', () => {
@@ -274,7 +277,7 @@ let longitude = '';
 function sendingMessage() {
   if (typingField.value !== '' || fileBase64 !== '' || latitude !== '' || longitude !== '') {
     const xhr = new XMLHttpRequest();
-    const url = 'https://chaos-organizer-valerie-sidman.herokuapp.com/api/messages/new';
+    const url = `${pathToBackend}/api/messages/new`;
 
     const data = {};
     data.text = typingField.value;
@@ -499,7 +502,7 @@ findedClear.addEventListener('click', () => {
 
 function searchMessage(searchRequest) {
   const xhr = new XMLHttpRequest();
-  const url = `https://chaos-organizer-valerie-sidman.herokuapp.com/api/messages/find?query=${searchRequest}`;
+  const url = `${pathToBackend}/api/messages/find?query=${searchRequest}`;
   xhr.open('GET', url, true);
   xhr.addEventListener('load', () => {
     if (xhr.status === 200) {
