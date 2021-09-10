@@ -1,7 +1,6 @@
 const { saveAs } = require('file-saver');
 
 const pathToBackend = process.env.PATH_TO_BACKEND;
-console.log('pathToBackend', pathToBackend);
 
 const allFavLink = document.querySelector('.favorite-link');
 let allFavMsgs = JSON.parse(window.localStorage.getItem('favorite_msgs'));
@@ -296,11 +295,9 @@ function sendingMessage() {
     xhr.addEventListener('readystatechange', () => {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
-          const body = JSON.parse(xhr.response);
-          // eslint-disable-next-line no-console
-          console.log(body.id);
-          // messages.push(body);
-          // renderMessages();
+          counter = 1;
+          messages = [];
+          getAllMessages(-1);
           typingField.value = '';
           fileName.textContent = '';
           closeFileBtn.classList.add('inactive');
