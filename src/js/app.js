@@ -226,29 +226,31 @@ function renderMessages() {
 // Запрос на получение сообщений с сервера
 
 function getAllMessages(elementId) {
-  const xhr = new XMLHttpRequest();
-  const url = `${pathToBackend}/api/messages?page=${counter}`;
-  let id = elementId;
-  xhr.open('GET', url, true);
-  xhr.addEventListener('load', () => {
-    if (xhr.status === 200) {
-      const body = JSON.parse(xhr.response);
-      if (body.length > 0) {
-        allMessages.innerHTML = '';
-        messages = body.concat(messages);
-        renderMessages();
-        if (id < 0) {
-          id = messages[messages.length - 1].id;
+  return new Promise((resolve) => {
+    const xhr = new XMLHttpRequest();
+    const url = `${pathToBackend}/api/messages?page=${counter}`;
+    let id = elementId;
+    xhr.open('GET', url, true);
+    xhr.addEventListener('load', () => {
+      if (xhr.status === 200) {
+        const body = JSON.parse(xhr.response);
+        if (body.length > 0) {
+          allMessages.innerHTML = '';
+          messages = body.concat(messages);
+          renderMessages();
+          if (id < 0) {
+            id = messages[messages.length - 1].id;
+          }
+          const lastElement = document.getElementById(id);
+          lastElement.scrollIntoView();
+        } else {
+          counter -= 1;
         }
-        const lastElement = document.getElementById(id);
-        lastElement.scrollIntoView();
-      } else {
-        counter -= 1;
+        resolve();
       }
-    }
+    });
+    xhr.send();
   });
-
-  xhr.send();
 }
 
 const messagesBlock = document.querySelector('.messages-block');
@@ -497,6 +499,18 @@ findedClear.addEventListener('click', () => {
   clearingFoundMessages();
 });
 
+function getPagesUntilId(id, callback) {
+  const lastElementId = messages[0].id;
+  if (id < lastElementId) {
+    counter += 1;
+    getAllMessages(-1).then(() => {
+      getPagesUntilId(id, callback);
+    });
+  } else {
+    callback();
+  }
+}
+
 function searchMessage(searchRequest) {
   const xhr = new XMLHttpRequest();
   const url = `${pathToBackend}/api/messages/find?query=${searchRequest}`;
@@ -507,15 +521,19 @@ function searchMessage(searchRequest) {
       if (body.length > 0) {
         allFindedMsgs = body;
         allFindedMsgs.forEach((element) => {
-          const findedMsg = document.getElementById(element.id);
-          findedMsg.classList.add('finded-msg');
-          findedCounter.textContent = allFindedMsgs.length;
+          new Promise((resolve) => {
+            getPagesUntilId(element.id, resolve);
+          }).then(() => {
+            const findedMsg = document.getElementById(element.id);
+            findedMsg.classList.add('finded-msg');
+            findedCounter.textContent = allFindedMsgs.length;
+            findedCurrentMsgIndex = allFindedMsgs.length - 1;
+            findedMsgInFocus = document.getElementById(allFindedMsgs[findedCurrentMsgIndex].id);
+            findedMsgInFocus.classList.add('current-finded-msg');
+            findedMsgInFocus.scrollIntoView({ behavior: 'smooth' });
+            searchField.value = '';
+          });
         });
-        findedCurrentMsgIndex = allFindedMsgs.length - 1;
-        findedMsgInFocus = document.getElementById(allFindedMsgs[findedCurrentMsgIndex].id);
-        findedMsgInFocus.classList.add('current-finded-msg');
-        findedMsgInFocus.scrollIntoView({ behavior: 'smooth' });
-        searchField.value = '';
       } else {
         // eslint-disable-next-line no-alert
         alert('No results found for this search.');
