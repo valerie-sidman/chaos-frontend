@@ -137,14 +137,11 @@ function renderMessages() {
         </li>
       </ul>
       ${partOfMessage}
-      <ul class="msg-info-panel">
-        <li class="msg-info-item">
-          <button class="more-btn more-off">More</button>
-        </li>
-        <li class="msg-info-item">
+      <div class="msg-info-panel">
+        <div class="msg-info-item">
           <span class="msg-date">${formattedTime}</span>
-        </li>
-      </ul>`;
+        </div>
+      </div>`;
     message.insertAdjacentHTML('beforeend', messageBody);
 
     // Скачивание файла на компьютер

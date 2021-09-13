@@ -190,7 +190,7 @@ main {
 }
 
 .current-finded-msg {
-  box-shadow: 0 0 10px 5px rgb(222, 232, 218);
+  box-shadow: 0 0 0.52vw 0.26vw rgb(222, 232, 218);
 }
 
 .messages-block {
@@ -281,7 +281,7 @@ main {
 
 .msg-info-panel {
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   margin-top: 0.99vw;
 }
 
