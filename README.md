@@ -57,7 +57,7 @@
   <img src="https://raw.githubusercontent.com/valerie-sidman/chaos-frontend/master/screenshots/chaos_dialog_download.png">
 </p>
 <h3 align="left">Ленивая подгрузка</h3>
-<p align="left">Несмотря на непродуктивное определение данной функции, она довольно удобна. Чтобы посмотреть информацию, которую Вы отправляли ранее, необходимо прокрутить ползунок вертикальной прокрутки чата вверх до упора, после чего появятся предыдущие 10 заметок:</p>
+<p align="left">Несмотря на непродуктивное название данной функции, она довольно удобна. Чтобы посмотреть информацию, которую Вы отправляли ранее, необходимо прокрутить ползунок вертикальной прокрутки чата вверх до упора, после чего появятся предыдущие 10 заметок:</p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/valerie-sidman/chaos-frontend/master/screenshots/chaos_auto_loading.gif">
 </p>
@@ -125,3 +125,15 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/valerie-sidman/chaos-frontend/master/screenshots/chaos_coords.png">
 </p>
+<h2 align="left">Ссылки</h2>
+<p align="left">:white_circle: <a href="https://valerie-sidman.github.io/chaos-frontend/">Органайзер Chaos</a></p>
+<p align="left">:white_circle: <a href="https://github.com/valerie-sidman/chaos-backend">Посмотреть backend</a></p>
+<p align="left">:white_circle: <a href="https://app.slack.com/client/TFBGWRJJY/DSYSR5BL6">Связаться с автором в Slack</a></p>
+<h2 align="left">Что можно было бы улучшить</h2>
+<p align="left">В целом, я очень довольная своей работой. Со своими функциями приложение справляется отлично, но всё же есть моменты, которые, на мой взгляд в дальнейшем можно было бы усовершенствовать, а именно:</p>
+<ul>
+  <li>Переписать приложение с использованием React. Разнести логику по компонентам. Это упростит процесс ревью, а также сделает структуру более опрятной и логичной.</li>
+  <li>Улучшить дизайн приложения. Сделать его современным и привлекательным.</li>
+  <li>Перевести вёрстку из "резиновой" в адаптивную.</li>
+</ul>
+
