@@ -6,7 +6,18 @@ const allFavLink = document.querySelector('.favorite-link');
 let allFavMsgs = JSON.parse(window.localStorage.getItem('favorite_msgs'));
 if (!allFavMsgs) {
   allFavMsgs = [];
-  localStorage.setItem('favorite_msgs', JSON.stringify(allFavMsgs));
+  window.localStorage.setItem('favorite_msgs', JSON.stringify(allFavMsgs));
+}
+
+const pinBlock = document.querySelector('.pin-block');
+const pinMessage = window.localStorage.getItem('pin-message');
+if (pinMessage) {
+  pinBlock.insertAdjacentHTML('afterbegin', pinMessage);
+  const unpinMsgBtn = pinBlock.querySelector('.unpin');
+  unpinMsgBtn.addEventListener('click', () => {
+    pinBlock.innerHTML = '';
+    window.localStorage.setItem('pin-message', '');
+  });
 }
 
 // Загрузка всех сообщений
@@ -195,7 +206,6 @@ function renderMessages() {
     // Закрепление сообщения
 
     const pinBtn = message.querySelector('.pin-tool');
-    const pinBlock = document.querySelector('.pin-block');
     const msgToPin = pinBtn.closest('.message');
 
     pinBtn.addEventListener('click', () => {
@@ -210,6 +220,8 @@ function renderMessages() {
         pinFromPinnedMsg.textContent = 'close';
         pinFromPinnedMsg.classList.remove('pin-tool');
         pinFromPinnedMsg.classList.add('unpin');
+
+        window.localStorage.setItem('pin-message', pinnedMsg.outerHTML);
 
         const unpinMsgBtn = pinnedMsg.querySelector('.unpin');
         unpinMsgBtn.addEventListener('click', () => {
